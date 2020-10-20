@@ -5,7 +5,7 @@ set -euo pipefail
 GH_REPO="https://github.com/purescript/purescript"
 
 fail() {
-  echo -e "asdf-purs: $*"
+  echo -e "asdf-purescript: $*"
   exit 1
 }
 
@@ -45,7 +45,7 @@ download_release() {
 
   url="$GH_REPO/releases/download/v${version}/${bin}.tar.gz"
 
-  echo "* Downloading purs release $version..."
+  echo "* Downloading purescript release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
@@ -55,7 +55,7 @@ install_version() {
   local install_path="$3"
 
   if [ "$install_type" != "version" ]; then
-    fail "asdf-purs supports release installs only"
+    fail "asdf-purescript supports release installs only"
   fi
 
   local release_file="$install_path/purs-$version.tar.gz"
@@ -71,6 +71,6 @@ install_version() {
     echo "purs $version installation was successful!"
   ) || (
     rm -rf "$install_path"
-    fail "An error ocurred while installing purs $version."
+    fail "An error ocurred while installing purescript $version."
   )
 }
