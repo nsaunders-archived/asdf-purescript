@@ -43,7 +43,6 @@ download_release() {
     fail "unrecognized operating system $OSTYPE"
   fi
 
-  # https://github.com/purescript/purescript/releases/download/v0.13.8/linux64.tar.gz
   url="$GH_REPO/releases/download/v${version}/${bin}.tar.gz"
 
   echo "* Downloading purs release $version..."
@@ -65,6 +64,7 @@ install_version() {
     download_release "$version" "$release_file"
     tar -xzf "$release_file" -C "$install_path" --strip-components=1 purescript/purs || fail "Could not extract $release_file"
     mv "$install_path/purs" "$install_path/bin"
+    chmod +X "$install_path/bin/purs"
     rm "$release_file"
 
     test -x "$install_path/bin/purs --help" || fail "Expected $install_path/bin/purs to be executable."
