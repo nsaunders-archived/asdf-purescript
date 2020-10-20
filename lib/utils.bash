@@ -64,10 +64,9 @@ install_version() {
     download_release "$version" "$release_file"
     tar -xzf "$release_file" -C "$install_path" --strip-components=1 purescript/purs || fail "Could not extract $release_file"
     mv "$install_path/purs" "$install_path/bin"
-    chmod +X "$install_path/bin/purs"
     rm "$release_file"
 
-    test -x "$install_path/bin/purs --help" || fail "Expected $install_path/bin/purs to be executable."
+    test -x "$install_path/bin/purs" || fail "Expected $install_path/bin/purs to be executable."
 
     echo "purs $version installation was successful!"
   ) || (
