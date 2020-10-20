@@ -61,9 +61,10 @@ install_version() {
 
   local release_file="$install_path/purs-$version.tar.gz"
   (
-    mkdir -p "$install_path"
+    mkdir -p "$install_path/bin"
     download_release "$version" "$release_file"
     tar -xzf "$release_file" -C "$install_path" --strip-components=1 purescript/purs || fail "Could not extract $release_file"
+    mv "$install_path/purs" "$install_path/bin"
     rm "$release_file"
 
     local tool_cmd
