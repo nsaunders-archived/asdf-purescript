@@ -67,9 +67,7 @@ install_version() {
     mv "$install_path/purs" "$install_path/bin"
     rm "$release_file"
 
-    local tool_cmd
-    tool_cmd="$(echo "purs --help" | cut -d' ' -f2-)"
-    test -x "$install_path/bin/$tool_cmd" || fail "Expected $install_path/bin/$tool_cmd to be executable."
+    test -x "$install_path/bin/purs --help" || fail "Expected $install_path/bin/purs to be executable."
 
     echo "purs $version installation was successful!"
   ) || (
