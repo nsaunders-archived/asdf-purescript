@@ -6,8 +6,6 @@
 
 </div>
 
-# Contents
-
 # Dependencies
 
 The only dependencies are `bash`, `curl`, and `tar`.
